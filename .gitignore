@@ -1,0 +1,5 @@
+.gradle
+.idea
+gradle
+build
+allure-report
