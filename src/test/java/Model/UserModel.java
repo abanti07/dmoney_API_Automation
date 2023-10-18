@@ -1,3 +1,5 @@
+package Model;
+
 public class UserModel {
     private String name;
     private String email;
@@ -53,7 +55,12 @@ public class UserModel {
     public void setRole(String role) {
         this.role = role;
     }
-    public UserModel(){
-
+    public UserModel(String name,String email,String password,String phone_number,String nid,String role){
+        this.name=name;
+        this.email=email;
+        this.password=password;
+        this.phone_number=phone_number;
+        this.nid=nid;
+        this.role=role;
     }
 }
