@@ -82,14 +82,14 @@ public class UserTestRunner extends Setup {
         String password = "1234";
         String phone_number = "01313" + Utils.generateRandomId(1000, 9999) + "77";
         String nid = "123456789";
-        String role = "Customer";
+        String role = "Agent";
         UserModel userModel = new UserModel(name, email, password, phone_number, nid, role);
 
         Response res = user.CreateUser(prop.getProperty("token"), userModel, prop.getProperty("Partnerkey"));
         JsonPath jsonPath = res.jsonPath();
         Thread.sleep(3000);
-        String phonenumber = jsonPath.get("user.phone_number");
-        Utils.SaveEnvVar("Agent_phone_number", phonenumber);
+        String phnnum = jsonPath.get("user.phone_number");
+        Utils.SaveEnvVar("Agent_phone_number", phnnum);
     }
 
     @Test(priority = 4, enabled = false, description = "Admin tried to find a user with userId.")

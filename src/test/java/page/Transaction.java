@@ -12,14 +12,35 @@ public class Transaction {
     public Transaction(String baseUrl){
         this.baseUrl = baseUrl;
     }
-    public Response deposite(String token, TransactionModel model){
+    public Response deposite(String token, TransactionModel model,String Partnerkey){
         RestAssured.baseURI=baseUrl;
         Response res=given().contentType("application/json")
                 .header("Authorization", token)
-                .header("X-AUTH-SECRET-KEY","ROADTOSDET")
+                .header("X-AUTH-SECRET-KEY",Partnerkey)
                 .body(model)
                 .when()
                 .post("/transaction/deposit");
         return res;
+    }
+    public Response withdraw(String token, TransactionModel model,String Partnerkey){
+        RestAssured.baseURI=baseUrl;
+        Response res=given().contentType("application/json")
+                .header("Authorization", token)
+                .header("X-AUTH-SECRET-KEY",Partnerkey)
+                .body(model)
+                .when()
+                .post("/transaction/withdraw");
+        return res;
+    }
+    public  Response Payment(String token, TransactionModel model,String Partnerkey){
+        RestAssured.baseURI=baseUrl;
+        Response res=given().contentType("application/json")
+                .header("Authorization", token)
+                .header("X-AUTH-SECRET-KEY",Partnerkey)
+                .body(model)
+                .when()
+                .post("/transaction/payment");
+        return res;
+
     }
 }
