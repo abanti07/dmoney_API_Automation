@@ -2,24 +2,18 @@ package page;
 
 import Model.AdminModel;
 import Model.UserModel;
-import com.github.javafaker.Faker;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.apache.commons.configuration.ConfigurationException;
-import org.testng.annotations.Test;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.Properties;
 
 import static io.restassured.RestAssured.given;
 
 public class User {
-    String baseUrl;
+    String baseUrl="http://dmoney.roadtocareer.net";
 
     public User(String baseUrl) {
+
         this.baseUrl = baseUrl;
     }
 
@@ -51,22 +45,11 @@ public class User {
         return res;
     }
 
-    public String phone_number(Response res) {
-        //RestAssured.baseURI = baseUrl;
-        JsonPath jsonPath = res.jsonPath();
-        String phone_number = jsonPath.get("user.phone_number");
-        return phone_number;
-    }
-
-
-    public void SearchUser(String token, String userId) throws InterruptedException {
-        Thread.sleep(3000);
-        RestAssured.baseURI = baseUrl;
-        Response res = given().contentType("application/json").header("Authorization", token)
-                .when()
-                .get("/user/search/id/" + userId);
-
-    }
-
+//    public String phone_number(Response res) {
+//        RestAssured.baseURI = baseUrl;
+//        JsonPath jsonPath = res.jsonPath();
+//        String phone_number = jsonPath.get("user.phone_number");
+//        return phone_number;
+//    }
 
 }
